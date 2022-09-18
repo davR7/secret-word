@@ -65,11 +65,6 @@ code {
   background-color: #0575E6;
 }
 
-.btn:focus {
-  border: 2px solid #0575E6;
-  opacity: 0.9;
-}
-
 .btn:active {
   background-color:#0707b2;
 }
