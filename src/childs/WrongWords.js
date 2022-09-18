@@ -4,10 +4,10 @@ const WrongWords = () => {
     return (
         <div className="wrong-words">
             <p className="wrong-words__text">Tentativas sem sucesso:</p>
-            <div class="wrong-words__letters">
-                <span class="wrong-words__letter">a,</span>
-                <span class="wrong-words__letter">b,</span>
-                <span class="wrong-words__letter">c</span>
+            <div className="wrong-words__letters">
+                <span className="wrong-words__letter">a,</span>
+                <span className="wrong-words__letter">b,</span>
+                <span className="wrong-words__letter">c</span>
             </div>
         </div>
     );
