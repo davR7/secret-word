@@ -1,10 +1,11 @@
 import './App.css';
-import StartScreen from './components/StartScreen';
+//Components
+import PlayingGame from './components/PlayingGame';
 
 function App() {
   return (
     <div className="App flex-column-c">
-      <StartScreen />
+      <PlayingGame />
     </div>
   );
 }
