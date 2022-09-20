@@ -1,15 +1,27 @@
 import AppHeading from '../childs/AppHeading';
 import './css/GameOver.css'
+import {useContext} from 'react';
+import {GameContext} from '../contexts/GameContext';
 
 const GameOver = () => {
+    const { gameProps, handlerGameProps } = useContext(GameContext);
+    
+
+    const retry = () => {
+        handlerGameProps({
+            score: 0,
+            guesses: 3,
+            onStage: gameProps.stages[0]
+        })
+    }
+
     return (
         <main className="game-over">
             <AppHeading
-                title="Fim do Jogo"
-                subtitle="A sua pontuação foi: "
-                vars="50"
+                title="Game Over"
+                subtitle={`Total de Pontos: ${gameProps.score} pts`}
             />
-            <button type="button" className="btn">Sair</button>
+            <button onClick={retry} type="button" className="btn">Sair</button>
         </main>
     );
 };
