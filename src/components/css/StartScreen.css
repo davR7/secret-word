@@ -1,3 +1,16 @@
+.start-screen .heading__title {
+    font-size: 130px;
+	line-height: 120px;
+	text-shadow: 5px 5px #000000;
+	color: #ffffff;
+}
+
+.start-screen .heading__subtitle {
+    color: #ecfa00;
+    font-size: 25px;
+    margin-bottom: 100px;
+}
+
 .start-screen .btn {
     margin: 0 10px;
 }

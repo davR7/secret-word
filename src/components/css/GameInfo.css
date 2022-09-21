@@ -1,5 +1,11 @@
+.game-info__container {
+    width: 450px;
+    margin: 0 auto;
+    text-align: left;
+}
+
 .info-list {
     padding: 0;
     list-style: none;
-    width: 400px;
+    margin-bottom: 30px;
 }
