@@ -1,6 +1,6 @@
 import './css/GameControl.css';
 import { uniqueValues } from '../helpers/uniqueValues'
-import { useState, useRef, useContext, useEffect } from 'react'
+import { useState, useRef, useContext } from 'react'
 import { GameContext } from '../contexts/GameContext'
 
 const GameControl = () => {
@@ -34,23 +34,16 @@ const GameControl = () => {
         }
     }
 
-    useEffect(() => {
-        const uniqueLetters = uniqueValues(letters)
-        
-        if (
-            guessedLetters.length 
-            === 
-            uniqueLetters.length
-        ){
-            startGame({ 
-                score: score + points 
-            })
-        }
-    }, [guessedLetters.length])
+    const uniqueLetters = uniqueValues(letters)
+    const victoryCondition = () => {
+        guessedLetters.length === uniqueLetters.length && 
+        startGame({ score: score + points })
+    }
 
     const handlerSumbit = e => {
         e.preventDefault()
         verifyLetter(letter)
+        victoryCondition()
         setLetter("")
         inputRef.current.focus()
     }
