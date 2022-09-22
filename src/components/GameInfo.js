@@ -5,11 +5,11 @@ import { GameContext } from '../contexts/GameContext';
 
 
 const GameInfo = () => {
-    const { gameProps, handlerGameProps } = useContext(GameContext);
+    const { handlerGameProps } = useContext(GameContext);
 
     const goBack = () => {
         handlerGameProps({
-            onStage: gameProps.stages[0]
+            onStage: "start"
         })
     }
 
