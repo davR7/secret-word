@@ -1,7 +1,7 @@
 export const wordsList = {
     0: ["Suspensão", "Motor", "Capô", "Retrovisor", "Pistão"],
     1: ["Ameixa", "Tamarindo", "Seriguela", "Mamão", "Laranja", "Kiwi", "Morango"],
-    2: ["Fígado", "Cérebro", "Intestino", "Tireoide", "Pulmões", "Côrneas"],
+    2: ["Fígado", "Cérebro", "Intestino", "Tireoide", "Pulmão", "Côrnea"],
     3: ["Notebook", "Tablet", "Smartphone", "Teclado", "Processador", "Monitor"],
     4: ["Linguagem", "Framework", "Código", "Escopo", "Variáveis"],
     5: ["Sushi", "Tapioca", "Feijoada", "Lasanha", "Cuscuz"],
