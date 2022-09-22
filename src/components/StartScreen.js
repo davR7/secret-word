@@ -4,12 +4,11 @@ import {useContext} from 'react';
 import {GameContext} from '../contexts/GameContext';
 
 const StartScreen = () => {
-    const { gameProps, handlerGameProps, startGame 
-        } = useContext(GameContext);
+    const { handlerGameProps, startGame } = useContext(GameContext);
     
     const goGameInfo = () => {
         handlerGameProps({
-            onStage: gameProps.stages[3]
+            onStage: "info"
         })
     }
 

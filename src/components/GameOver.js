@@ -6,12 +6,13 @@ import {GameContext} from '../contexts/GameContext';
 const GameOver = () => {
     const { gameProps, handlerGameProps } = useContext(GameContext);
     
-
     const retry = () => {
         handlerGameProps({
             score: 0,
             guesses: 3,
-            onStage: gameProps.stages[0]
+            guessedLetters: [],
+            wrongLetters: [],
+            onStage: "start"
         })
     }
 
