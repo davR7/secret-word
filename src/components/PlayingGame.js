@@ -4,11 +4,16 @@ import SecretWord from '../childs/SecretWord';
 import GameControl from '../childs/GameControl';
 import WrongWords from '../childs/WrongWords';
 import { GameContext } from '../contexts/GameContext'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 
 const PlayingGame = () => {
-    const { gameProps } = useContext(GameContext)
+    const { gameProps, handlerGameProps } = useContext(GameContext)
     const { category, guesses } = gameProps
+
+    useEffect(() => {
+        if (guesses === 0)
+            handlerGameProps({ onStage: "end" })
+    }, [guesses, handlerGameProps])
 
     return (
         <main className="playing-game">
