@@ -11,7 +11,8 @@ const GameOver = () => {
             guesses: 3,
             guessedLetters: [],
             wrongLetters: [],
-            onStage: "start"
+            onStage: "start",
+            onPopUp: ""
         });
     };
 

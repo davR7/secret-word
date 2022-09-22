@@ -4,8 +4,8 @@ import { useState, useRef } from 'react'
 import { useGame } from '../hooks/useGame'
 
 const GameControl = () => {
-    const { gameProps, handlerGameProps, startGame } = useGame()
-    const { letters, score, points, guesses, guessedLetters, wrongLetters } = gameProps
+    const { gameProps, handlerGameProps } = useGame()
+    const { letters, guesses, guessedLetters, wrongLetters } = gameProps
 
     const [letter, setLetter] = useState("")
     const handlerLetter = ({ target }) => {
@@ -36,8 +36,10 @@ const GameControl = () => {
 
     const uniqueLetters = uniqueValues(letters)
     const victoryCondition = () => {
-        guessedLetters.length === uniqueLetters.length && 
-        startGame({ score: score + points })
+        guessedLetters.length === uniqueLetters.length &&
+        handlerGameProps({
+            onPopUp: "victory",
+        })
     }
 
     const handlerSumbit = e => {

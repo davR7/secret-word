@@ -7,6 +7,7 @@ export const GameContext = createContext()
 export const GameProvider = ({ children }) => {
     const [gameProps, setGameProps] = useState({
         onStage: "start",
+        onPopUp: "",
         category: "",
         points: 0,
         score: 0,
