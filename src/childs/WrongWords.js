@@ -1,9 +1,8 @@
-import './css/WrongWords.css';
-import { GameContext } from '../contexts/GameContext'
-import { useContext } from 'react'
+import './css/WrongWords.css'
+import { useGame } from '../hooks/useGame'
 
 const WrongWords = () => {
-    const { gameProps } = useContext(GameContext)
+    const { gameProps } = useGame()
     const { wrongLetters } = gameProps
 
     return (

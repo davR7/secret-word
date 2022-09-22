@@ -1,10 +1,9 @@
+import './css/GameOver.css';
 import AppHeading from '../childs/AppHeading';
-import './css/GameOver.css'
-import {useContext} from 'react';
-import {GameContext} from '../contexts/GameContext';
+import { useGame } from '../hooks/useGame';
 
 const GameOver = () => {
-    const { gameProps, handlerGameProps } = useContext(GameContext);
+    const { gameProps, handlerGameProps } = useGame();
     
     const retry = () => {
         handlerGameProps({
@@ -13,8 +12,8 @@ const GameOver = () => {
             guessedLetters: [],
             wrongLetters: [],
             onStage: "start"
-        })
-    }
+        });
+    };
 
     return (
         <main className="game-over">

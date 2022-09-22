@@ -1,10 +1,9 @@
-import AppHeading from '../childs/AppHeading';
 import './css/StartScreen.css'
-import {useContext} from 'react';
-import {GameContext} from '../contexts/GameContext';
+import AppHeading from '../childs/AppHeading';
+import { useGame } from '../hooks/useGame';
 
 const StartScreen = () => {
-    const { handlerGameProps, startGame } = useContext(GameContext);
+    const { handlerGameProps, startGame } = useGame();
     
     const goGameInfo = () => {
         handlerGameProps({

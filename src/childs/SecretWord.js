@@ -1,10 +1,9 @@
-import './css/SecretWord.css';
-import { GameContext } from '../contexts/GameContext'
-import { useContext } from 'react'
+import './css/SecretWord.css'
+import { useGame } from '../hooks/useGame'
 
 
 const SecretWord = () => {
-    const { gameProps, handlerGameProps } = useContext(GameContext)
+    const { gameProps, handlerGameProps } = useGame()
     const { letters, score, square, points, guessedLetters } = gameProps
     const handlerSquare = index => {
         if (square > 0 && letters.length < 6){

@@ -1,10 +1,10 @@
-import './css/GameControl.css';
+import './css/GameControl.css'
 import { uniqueValues } from '../helpers/uniqueValues'
-import { useState, useRef, useContext } from 'react'
-import { GameContext } from '../contexts/GameContext'
+import { useState, useRef } from 'react'
+import { useGame } from '../hooks/useGame'
 
 const GameControl = () => {
-    const { gameProps, handlerGameProps, startGame } = useContext(GameContext)
+    const { gameProps, handlerGameProps, startGame } = useGame()
     const { letters, score, points, guesses, guessedLetters, wrongLetters } = gameProps
 
     const [letter, setLetter] = useState("")
@@ -68,4 +68,4 @@ const GameControl = () => {
     );
 };
 
-export default GameControl;
+export default GameControl

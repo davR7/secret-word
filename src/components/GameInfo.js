@@ -1,17 +1,16 @@
-import AppHeading from '../childs/AppHeading';
 import './css/GameInfo.css'
-import { useContext } from 'react';
-import { GameContext } from '../contexts/GameContext';
+import AppHeading from '../childs/AppHeading'
+import { useGame } from '../hooks/useGame'
 
 
 const GameInfo = () => {
-    const { handlerGameProps } = useContext(GameContext);
+    const { handlerGameProps } = useGame();
 
     const goBack = () => {
         handlerGameProps({
             onStage: "start"
-        })
-    }
+        });
+    };
 
     return (
         <main className="game-info">
@@ -68,4 +67,4 @@ const GameInfo = () => {
     );
 };
 
-export default GameInfo;
+export default GameInfo
