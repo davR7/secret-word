@@ -1,12 +1,11 @@
 import { wordsList, categoryList, categoryPoints } from '../data/gameData';
 import { pickWordCategoryPoints } from '../helpers/pickWordCategoryPoints';
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState } from 'react';
 
 export const GameContext = createContext()
 
-export const GameProvider = ({children}) => {
+export const GameProvider = ({ children }) => {
     const [gameProps, setGameProps] = useState({
-        stages: ["start", "game", "end", "info"],
         onStage: "start",
         category: "",
         points: 0,
@@ -28,10 +27,11 @@ export const GameProvider = ({children}) => {
 
     const startGame = (addObj = {}) => {
         const [category, word, points] = pickWordCategoryPoints(
-            categoryList, 
-            wordsList, 
-            categoryPoints
+        categoryList,
+        wordsList,
+        categoryPoints
         )
+
         const letters = word.split("").map(l => l.toLowerCase())
 
         const cleanLetters = {
@@ -39,37 +39,21 @@ export const GameProvider = ({children}) => {
             wrongLetters: []
         }
 
-        handlerGameProps({ 
-            category, 
+        handlerGameProps({
+            category,
             word,
-            points, 
+            points,
             letters,
-            square: 2, 
-            onStage: "game", 
+            square: 2,
+            onStage: "game",
             ...cleanLetters,
-            ...addObj 
+            ...addObj
         });
     }
 
-    useEffect(() => {
-        const opts = {
-            guessedLetters: [],
-            wrongLetters: [],
-            onStage: gameProps.stages[2] 
-        }
-        if (gameProps.guesses <= 0){
-            setGameProps(game => {
-                return {
-                    ...game,
-                    ...opts
-                }
-            })
-        }
-    }, [gameProps.guesses])
-
     const data = {
-        gameProps, 
-        handlerGameProps, 
+        gameProps,
+        handlerGameProps,
         startGame
     }
 
