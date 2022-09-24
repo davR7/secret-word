@@ -11,7 +11,10 @@ const PopUp = ({title, text, textBtn, eventBtn}) => {
 
     return (
         <div className="pop-up flex-row-c">
-            <div className={`pop-up__inner ${bg} ${flex}`}>
+            <div 
+                className={`pop-up__inner ${bg} ${flex}`} 
+                style={onPopUp !== "defeat" ? {textAlign: "left"} : {textAlign: "center"}}
+                >
                 <button type="btn" className="pop-up__btn btn" onClick={eventBtn}>{textBtn}</button>
                 <h3 className="pop-up__title">{title}</h3>
                 {text ? 
