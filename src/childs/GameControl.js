@@ -5,7 +5,7 @@ import { useGame } from '../hooks/useGame'
 
 const GameControl = () => {
     const { gameProps, handlerGameProps } = useGame()
-    const { letters, guesses, guessedLetters, wrongLetters } = gameProps
+    const { letters, guesses, guessedLetters, onPopUp, wrongLetters } = gameProps
 
     const [letter, setLetter] = useState("")
     const handlerLetter = ({ target }) => {
@@ -63,6 +63,7 @@ const GameControl = () => {
                     className="game-control__input"
                     maxLength="1"
                     required
+                    disabled={onPopUp === "" ? false : true}
                 />
                 <button className="game-control__btn btn" type="submit">Jogar</button>
             </form>
