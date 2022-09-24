@@ -26,7 +26,10 @@ const PlayingGame = () => {
                 score: score + points 
             })
         } else if (onPopUp === "defeat") {
-            handlerGameProps({ onStage: "end" })
+            handlerGameProps({
+                onPopUp: "", 
+                onStage: "end"
+            })
         }
     }
 
@@ -34,8 +37,8 @@ const PlayingGame = () => {
         <main className="playing-game">
             <AppHeading 
                 title="Qual é a Palavra Misteriosa?" 
-                subtitle={`Dica sobre a palavra: ${category}`}
-                text={`Você ainda tem ${guesses} tentativa(s)`}
+                subtitle={`Dica sobre a Palavra: ${category}`}
+                text={`Total de Tentativas: ${guesses}`}
             />
             <SecretWord />
             <GameControl />

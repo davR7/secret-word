@@ -16,9 +16,9 @@ const GameInfo = () => {
         <main className="game-info">
             <AppHeading
                 title="Informações do Jogo"
-                subtitle="O que você precisa entender..."
+                subtitle="O que você precisa entender?"
             />
-            <div className="game-info__container">
+            <section className="game-info__section">
                 <p className="game-info__text">
                     Secret Word é um jogo no qual os jogadores tentam descobrir uma 
                     palavra misteriosa. Para auxiliar são fornecidos: dica (qual 
@@ -44,7 +44,7 @@ const GameInfo = () => {
                         </p>
                     </li>
                     <li className="info-list__item">
-                        <h3 className="info-list__title color-2">Square</h3>
+                        <h3 className="info-list__title color-2">Square:</h3>
                         <p className="info-list__text">
                             É a moeda do jogo. Com essa podemos descobrir um ou mais letras
                             escondidas no painel sem precisar adivinhar. Palavras de cinco
@@ -57,7 +57,7 @@ const GameInfo = () => {
                         </p>
                     </li>
                 </ul>
-            </div>
+            </section>
             <button
                 type="button"
                 className="btn"

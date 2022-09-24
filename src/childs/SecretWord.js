@@ -20,7 +20,7 @@ const SecretWord = () => {
             <div className="secret-word__display flex-row-c">
                 <p className="secret-word__score">Score: {score}pts</p>
                 <p className="secret-word__points">Prêmio: {points}pts</p>
-                <p className="secret-word__points">Square: {square}</p>
+                <p className="secret-word__square">Square: {square}</p>
             </div>
             <div className="secret-word__letters">
                 {letters.map((letter, i) => (
