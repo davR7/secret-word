@@ -30,8 +30,6 @@ const PlayingGame = () => {
         }
     }
 
-
-
     return (
         <main className="playing-game">
             <AppHeading 
@@ -52,7 +50,7 @@ const PlayingGame = () => {
             }
             {
                 onPopUp === "defeat" && <PopUp 
-                    title="Ops.. Não foi dessa vez =("
+                    title="Ops... Não foi dessa vez =("
                     textBtn="Sair"
                     eventBtn={handlerPopUp}
                 />
