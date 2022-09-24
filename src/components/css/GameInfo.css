@@ -1,15 +1,34 @@
-.game-info__container {
+.game-info .heading {
+    padding-top: 20px;
+}
+
+.game-info .heading__title {
+    margin-bottom: 20px;
+}
+
+.game-info .heading__subtitle {
+    margin: 40px 0;
+}
+
+.game-info .btn {
+    margin: 30px 0;
+}
+
+.game-info__section {
     width: 450px;
     margin: 0 auto;
     text-align: left;
 }
 
-.info-list {
-    padding: 0;
-    list-style: none;
+.game-info__text {
     margin-bottom: 30px;
 }
 
-.game-info .btn {
-    margin-bottom: 30px;
+.info-list {
+    margin: 20px 0;
+}
+
+.info-list__title {
+    margin: 20px 0;
+    font-size: 20px;
 }

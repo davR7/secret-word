@@ -1,6 +1,11 @@
+.start-screen .heading {
+    padding-top: 100px;
+}
+
 .start-screen .heading__title {
     font-size: 130px;
 	line-height: 120px;
+    margin-bottom: 50px;
 	text-shadow: 5px 5px #000000;
 	color: #ffffff;
 }

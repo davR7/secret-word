@@ -1,9 +1,11 @@
 .heading__title {
     font-size: 28px;
+    margin: 20px 0;
 }
 
 .heading__subtitle {
     font-size: 18px;
+    margin: 20px 0;
 }
 
 .heading__highlighted-word {
