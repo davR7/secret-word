@@ -1,4 +1,4 @@
-import { wordsList, categoryList, categoryPoints } from '../data/gameData';
+import { categoryList, categoryPoints, wordsList } from '../data/gameData';
 import { pickWordCategoryPoints } from '../helpers/pickWordCategoryPoints';
 import { createContext, useState, useEffect } from 'react';
 
@@ -27,10 +27,10 @@ export const GameProvider = ({ children }) => {
     }
 
     const startGame = (addObj = {}) => {
-        const [category, word, points] = pickWordCategoryPoints(
+        const [category, points, word] = pickWordCategoryPoints(
             categoryList,
-            wordsList,
-            categoryPoints
+            categoryPoints,
+            wordsList
         )
 
         const letters = word.split("").map(l => l.toLowerCase())
@@ -42,8 +42,8 @@ export const GameProvider = ({ children }) => {
 
         handlerGameProps({
             category,
-            word,
             points,
+            word,
             letters,
             square: 2,
             onStage: "game",
