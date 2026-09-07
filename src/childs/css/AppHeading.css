@@ -1,13 +1,40 @@
-.heading__title {
-    font-size: 28px;
+.heading {
+    padding: 10px 0;
+}
+
+.heading .title {
+    text-align: center;
+}
+
+.title__prefix {
+    font-size: 24px;
+    text-shadow: 4px 4px var(--dark-color);
+}
+
+.title__main {
+    font-size: 36px;
     margin: 20px 0;
 }
 
-.heading__subtitle {
-    font-size: 18px;
+.heading__wrapper {
+    text-align: center;
+}
+
+.heading__description {
+    font-size: 13px;
     margin: 20px 0;
 }
 
-.heading__highlighted-word {
-    color: #ecfa00;
+@media (min-width: 720px) {
+    .title__prefix {
+        font-size: 30px;
+    }
+    .title__main {
+        font-size: 48px;
+    }
+
+    .heading__description {
+        max-width: 620px;
+        font-size: 16px;
+    }
 }
