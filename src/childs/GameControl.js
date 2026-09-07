@@ -1,13 +1,16 @@
 import './css/GameControl.css'
-import { uniqueValues } from '../helpers/uniqueValues'
-import { useState, useRef } from 'react'
-import { useGame } from '../hooks/useGame'
+import Button from './Button';
+import { uniqueValues } from '../helpers/uniqueValues';
+import { useState, useRef } from 'react';
+import { useGame } from '../hooks/useGame';
+import { MAX_WORD_REVEALS } from '../shared/constants';
 
 const GameControl = () => {
-    const { gameProps, handlerGameProps } = useGame()
-    const { letters, guesses, guessedLetters, onPopUp, wrongLetters } = gameProps
+    const { game, handlerGame, myWords, resetMyWords } = useGame()
+    const { letters, guesses, guessedLetters, onPopUp, wrongLetters } = game
 
     const [letter, setLetter] = useState("")
+    
     const handlerLetter = ({ target }) => {
         const regex = /[\d\s,/./:/;/?/!/^/~/´/-/_]/g
         setLetter(target.value.replace(regex, ""))
@@ -24,10 +27,10 @@ const GameControl = () => {
 
         if (letters.includes(lowercase)) {
             guessedLetters.push(lowercase)
-            handlerGameProps({ guessedLetters })
+            handlerGame({ guessedLetters })
         } else {
             wrongLetters.push(lowercase)
-            handlerGameProps({
+            handlerGame({
                 wrongLetters,
                 guesses: guesses - 1
             })
@@ -35,17 +38,24 @@ const GameControl = () => {
     }
 
     const uniqueLetters = uniqueValues(letters)
-    const victoryCondition = () => {
-        guessedLetters.length === uniqueLetters.length &&
-        handlerGameProps({
-            onPopUp: "victory",
-        })
+    
+    const handleGameResult = () => {
+        const isWordLimitReached = myWords.length === MAX_WORD_REVEALS
+
+        if (guessedLetters.length === uniqueLetters.length && isWordLimitReached) {
+            handlerGame({ onPopUp: "victory" })
+            return resetMyWords();
+        }
+
+        if (guessedLetters.length === uniqueLetters.length) {
+            return handlerGame({ onPopUp: "continue" })
+        }
     }
 
     const handlerSumbit = e => {
         e.preventDefault()
         verifyLetter(letter)
-        victoryCondition()
+        handleGameResult()
         setLetter("")
         inputRef.current.focus()
     }
@@ -53,7 +63,7 @@ const GameControl = () => {
     return (
         <div className="game-control">
             <p className="game-control__text">Tente adivinhar uma letra da palavra:</p>
-            <form onSubmit={handlerSumbit} className="game-control__form flex-row-c">
+            <form onSubmit={handlerSumbit} className="game-control__form flex-row-xy">
                 <input
                     type="text"
                     name="letter"
@@ -65,7 +75,7 @@ const GameControl = () => {
                     required
                     disabled={onPopUp === "" ? false : true}
                 />
-                <button className="game-control__btn btn" type="submit">Jogar</button>
+                <Button className="game-control__btn" type="submit">Jogar</Button>
             </form>
         </div>
     );
