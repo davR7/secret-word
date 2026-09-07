@@ -1,28 +1,20 @@
 import './css/GameOver.css';
 import AppHeading from '../childs/AppHeading';
+import Button from '../childs/Button';
 import { useGame } from '../hooks/useGame';
 
 const GameOver = () => {
-    const { gameProps, handlerGameProps } = useGame();
+    const { game, resetGame } = useGame();
     
-    const retry = () => {
-        handlerGameProps({
-            score: 0,
-            guesses: 3,
-            guessedLetters: [],
-            wrongLetters: [],
-            onStage: "start",
-            onPopUp: ""
-        });
-    };
+    const exitGame = () => resetGame()
 
     return (
-        <main className="game-over">
+        <main className="game-over container">
             <AppHeading
                 title="Game Over"
-                subtitle={`Total de Pontos: ${gameProps.score} pts`}
+                description={`Total de Pontos: ${game.score}`}
             />
-            <button onClick={retry} type="button" className="btn">Sair</button>
+            <Button type="button" className="game-over__btn" onClick={() => exitGame()}>Sair do jogo</Button>
         </main>
     );
 };
