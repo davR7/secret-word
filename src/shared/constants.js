@@ -1,0 +1,1 @@
+export const MAX_WORD_REVEALS = 12
