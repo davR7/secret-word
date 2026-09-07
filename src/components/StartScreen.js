@@ -1,33 +1,21 @@
-import './css/StartScreen.css'
+import './css/StartScreen.css';
 import AppHeading from '../childs/AppHeading';
+import Button from '../childs/Button';
 import { useGame } from '../hooks/useGame';
 
 const StartScreen = () => {
-    const { handlerGameProps, startGame } = useGame();
+    const { startGame } = useGame();
     
-    const goGameInfo = () => {
-        handlerGameProps({
-            onStage: "info"
-        })
-    }
-
     return (
-        <main className="start-screen">
-            <AppHeading
-                title="Secret Word"
-                subtitle="Você não pode dizer uma palavra secreta?"
-            
-            />
-            <button 
-                type="button" 
-                className="btn"
-                onClick={() => startGame()}
-            >Inicie o Jogo</button>
-            <button 
-                type="button" 
-                className="btn"
-                onClick={() => goGameInfo()}
-            >Instruções</button>
+        <main className="start-screen container">
+            <img className="start-screen__img" src="/secret-icon.png" alt="" />
+            <div className="start-screen__content">
+                <AppHeading
+                    title="Secret Word"
+                    description="Você não consegue descobrir a palavra misteriosa?"
+                />
+                <Button type="button" className="start-screen__btn" onClick={() => startGame()}>Inicie o Jogo</Button>
+            </div>
         </main>
     );
 };
