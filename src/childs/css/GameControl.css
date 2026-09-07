@@ -1,15 +1,27 @@
+.game-control {
+    text-align: center;
+}
+
 .game-control__text {
     margin-bottom: 30px;
 }
 
 .game-control__input {
-    height: 50px;
-    width: 50px;
-    font-size: 2em;
+    height: 30px;
+    width: 30px;
+    font-size: 1rem;
     text-align: center;
     margin-right: 30px;
 }
 
 .game-control__input:focus {
-    outline: 2px solid #0575E6;
+    outline: 2px solid var(--primary-light);
+}
+
+@media (min-width: 720px) {
+    .game-control__input {
+        height: 50px;
+        width: 50px;
+        font-size: 2rem;
+    }
 }
