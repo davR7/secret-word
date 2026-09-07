@@ -1,80 +1,67 @@
-import { categoryList, categoryPoints, wordsList } from '../data/gameData';
-import { pickWordCategoryPoints } from '../helpers/pickWordCategoryPoints';
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState } from "react";
+import { initialGameState } from "./GameContextProps";
+import { GameAudioController } from "./GameAudioController";
+import { questionList } from "../data/gameData";
+import { selectRandomQuestionWithPoints } from "../helpers/selectRandomQuestionWithPoints";
 
 export const GameContext = createContext()
 
 export const GameProvider = ({ children }) => {
-    const [gameProps, setGameProps] = useState({
-        onStage: "start",
-        onPopUp: "",
-        category: "",
-        points: 0,
-        score: 0,
-        square: 2,
-        word: "",
-        letters: [],
-        guesses: 3,
-        guessedLetters: [],
-        wrongLetters: []
-    })
+    const [game, setGame] = useState(initialGameState)
+    const [myWords, setMyWords] = useState([]);
 
-    const handlerGameProps = newObj => {
-        setGameProps({
-            ...gameProps,
-            ...newObj
-        })
+    const handlerGame = value => {
+        setGame((prev) => ({
+            ...prev,
+            ...value
+        }))
     }
 
-    const startGame = (addObj = {}) => {
-        const [category, points, word] = pickWordCategoryPoints(
-            categoryList,
-            categoryPoints,
-            wordsList
-        )
+    const handlerMyWords = value => {
+        setMyWords(value)
+    }
 
-        const letters = word.split("").map(l => l.toLowerCase())
+    const startGame = (newGame = { score: 0, onPopUp: "" }) => {
+        const [points, question, words] = selectRandomQuestionWithPoints(questionList, myWords)
+
+        const letters = question.word.split("").map(l => l.toLowerCase())
 
         const cleanLetters = {
             guessedLetters: [],
             wrongLetters: []
         }
 
-        handlerGameProps({
-            category,
+        handlerMyWords(words);
+
+        handlerGame({
+            ...newGame,
+            ...cleanLetters,
             points,
-            word,
+            question,
             letters,
             square: 2,
             onStage: "game",
-            ...cleanLetters,
-            ...addObj
         });
     }
 
-    useEffect(() => {
-        const tagAudio = document
-            .getElementById('playAudio')
+    const gameOver = () => {
+        handlerGame({
+            onPopUp: "", 
+            onStage: "end"
+        })
+    }
+    
+    const resetGame = () => {
+        setGame({ ...initialGameState })
+    }
 
-        if (gameProps.onStage === "game") {
-            tagAudio.play()
-        } else if (
-            gameProps.onStage === "start" &&
-            tagAudio.currentTime > 0
-        ) {
-            tagAudio.pause()
-            tagAudio.currentTime = 0
-        }
-    }, [gameProps.onStage])
-
-    const data = {
-        gameProps,
-        handlerGameProps,
-        startGame
+    const resetMyWords = () => {
+        setMyWords([])
     }
 
     return (
-        <GameContext.Provider value={data}>
+        <GameContext.Provider value={{ game, handlerGame, myWords, handlerMyWords, resetMyWords, startGame, gameOver, resetGame }}>
+            <GameAudioController onStage={game.onStage} />
             {children}
         </GameContext.Provider>
     );
