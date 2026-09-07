@@ -2,7 +2,7 @@ import './css/PlayingGame.css';
 import AppHeading from '../childs/AppHeading';
 import SecretWord from '../childs/SecretWord';
 import GameControl from '../childs/GameControl';
-import WrongWords from '../childs/WrongWords';
+import WrongLetters from '../childs/WrongLetters';
 import PopUp from '../childs/PopUp';
 import { useEffect } from 'react';
 import { useGame } from '../hooks/useGame';
@@ -40,7 +40,7 @@ const PlayingGame = () => {
             />
             <SecretWord />
             <GameControl />
-            <WrongWords />
+            <WrongLetters />
             {
                 onPopUp === "victory" && <PopUp 
                     title="Parabéns, você venceu! 🏆 😊"
