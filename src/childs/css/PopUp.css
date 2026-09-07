@@ -16,33 +16,34 @@
 
 .pop-up__inner {
     position: relative;
-    padding: 32px;
+    padding: 20px;
     width: 320px;
     height: 160px;
     max-width: 640px;
     border-radius: 10px;
 }
 
-.pop-up__inner .btn {
-    position: absolute;
-    right: 30px;
-    bottom: 15px;
-    padding: 0 15px;
+.pop-up__btn {
+    display: block;
     border: none;
-    height: 28px;
     font-size: 10px;
+    height: 28px;
+    padding: 0 15px;
+    margin-top: 20px;
+    margin-left: auto;
 }
 
 .pop-up__victory {
-    background: #FFD700;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #4A569D, #FFD700);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #4A569D, #FFD700); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    border: 2px solid #333;
+    background: linear-gradient(135deg, var(--pop-up-victory-primary), var(--pop-up-victory-secondary));
+    border: 2px solid var(--primary-color);
+}
+
+.pop-up__continue {
+    background: linear-gradient(135deg, var(--pop-up-continue-primary), var(--pop-up-continue-secondary));
+    border: 2px solid var(--primary-color);
 }
 
 .pop-up__defeat {
-    background: #696969;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #836FFF, #696969);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #836FFF, #696969); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    border: 2px solid #333;
+    background: linear-gradient(135deg, var(--pop-up-defeat-primary), var(--pop-up-defeat-secondary)); 
+    border: 2px solid var(--primary-color);
 }
