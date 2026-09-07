@@ -3,24 +3,50 @@ import { useGame } from '../hooks/useGame'
 
 
 const SecretWord = () => {
-    const { gameProps, handlerGameProps } = useGame()
-    const { letters, score, square, points, guessedLetters } = gameProps
+    const { game, handlerGame } = useGame()
+    const { letters, score, revealedLetters, points, guesses, guessedLetters } = game
+    
     const handlerSquare = index => {
-        if (square > 0 && letters.length < 6){
+        if (revealedLetters > 0 && letters.length < 6){
             guessedLetters.push(letters[index])
-            handlerGameProps({ square: square - 2})
-        }else if (square > 0 && letters.length >= 6){
+            handlerGame({ revealedLetters: revealedLetters - 2})
+        }else if (revealedLetters > 0 && letters.length >= 6){
             guessedLetters.push(letters[index])
-            handlerGameProps({ square: square - 1})
+            handlerGame({ revealedLetters: revealedLetters - 1})
         }
     }
 
     return (
-        <div className="secret-word flex-column-c">
-            <div className="secret-word__display flex-row-c">
-                <p className="secret-word__score">Score: {score}pts</p>
-                <p className="secret-word__points">Prêmio: {points}pts</p>
-                <p className="secret-word__square">Square: {square}</p>
+        <div className="secret-word flex-column-xy">
+            <div className="display flex-row-xy">
+                <p className="display__item score">
+                    <span className="display__icon">⭐</span>
+                    <span className="display__label">
+                        <span className="display__name">Score:</span>
+                        <span className="display__value">{score}</span>
+                    </span>
+                </p>
+                <p className="display__item points">
+                    <span className="display__icon">🏆</span>
+                    <span className="display__label">
+                        <span className="display__name">Prêmio:</span>
+                        <span className="display__value">{points}</span>
+                    </span>
+                </p>
+                <p className="display__item guesses">
+                    <span className="display__icon">❤️</span>
+                    <span className="display__label">
+                        <span className="display__name">Chances:</span>
+                        <span className="display__value">{guesses}</span>
+                    </span>
+                </p>
+                <p className="display__item reveals">
+                    <span className="display__icon">🔍</span>
+                    <span className="display__label">
+                        <span className="display__name">Revelar:</span>
+                        <span className="display__value">{revealedLetters}</span>
+                    </span>
+                </p>
             </div>
             <div className="secret-word__letters">
                 {letters.map((letter, i) => (
