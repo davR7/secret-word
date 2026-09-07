@@ -1,4 +1,4 @@
-import './css/PlayingGame.css'
+import './css/PlayingGame.css';
 import AppHeading from '../childs/AppHeading';
 import SecretWord from '../childs/SecretWord';
 import GameControl from '../childs/GameControl';
@@ -8,44 +8,50 @@ import { useEffect } from 'react';
 import { useGame } from '../hooks/useGame';
 
 const PlayingGame = () => {
-    const { gameProps, handlerGameProps, startGame } = useGame();
-    const { letters, category, guesses, score, points, onPopUp } = gameProps;
+    const { game, handlerGame, startGame, gameOver} = useGame();
+    const { letters, question, guesses, score, points, onPopUp } = game;
 
     const lowercase = letters.join("")
     const word = lowercase.replace(/^./, lowercase[0].toUpperCase())
 
     useEffect(() => {
-        if (guesses === 0 && onPopUp === "")
-            handlerGameProps({ onPopUp: "defeat" })
-    }, [guesses, onPopUp, handlerGameProps])
+        if (guesses === 0 && onPopUp === ""){
+            handlerGame({ onPopUp: "defeat" })
+        } 
+    }, [guesses, onPopUp, handlerGame])
 
     const handlerPopUp = () => {
         if (onPopUp === "victory") {
-            startGame({
-                onPopUp: "", 
-                score: score + points 
-            })
+            handlerGame({ onPopUp: "", score: score + points });
+            gameOver();
+        } else if (onPopUp === "continue") {
+            startGame({ onPopUp: "", score: score + points })
         } else if (onPopUp === "defeat") {
-            handlerGameProps({
-                onPopUp: "", 
-                onStage: "end"
-            })
+            gameOver();
         }
     }
 
     return (
-        <main className="playing-game">
+        <main className="playing-game container">
             <AppHeading 
-                title="Qual é a Palavra Misteriosa?" 
-                subtitle={`Dica sobre a Palavra: ${category}`}
-                text={`Total de Tentativas: ${guesses}`}
+                prefix="Qual é a" 
+                title="Palavra Misteriosa?"
+                description={question?.clue}
             />
             <SecretWord />
             <GameControl />
             <WrongWords />
             {
                 onPopUp === "victory" && <PopUp 
-                    title="Parabéns você venceu! =)"
+                    title="Parabéns, você venceu! 🏆 😊"
+                    text={`🎉 Você fez ${score + points} pontos!`}
+                    textBtn="sair"
+                    eventBtn={handlerPopUp}
+                />
+            }
+            {
+                onPopUp === "continue" && <PopUp 
+                    title="Parabéns, palavra correta! 😄"
                     text={`Palavra: ${word} - Prêmio: ${points}pts`}
                     textBtn="Continue"
                     eventBtn={handlerPopUp}
@@ -53,7 +59,8 @@ const PlayingGame = () => {
             }
             {
                 onPopUp === "defeat" && <PopUp 
-                    title="Ops... Não foi dessa vez =("
+                    title="Ah, não! Fim de jogo 😢"
+                    text="Melhor sorte na próxima!"
                     textBtn="Sair"
                     eventBtn={handlerPopUp}
                 />
