@@ -1,0 +1,55 @@
+.wrong-letters {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.wrong-letters__title {
+    display: block;
+    color: var(--secondary-color);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.wrong-letters__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.wrong-letters__letter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: #ffe5e5;
+    border: 1px solid #ffb8b8;
+    color: #d62828;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.wrong-letters__empty {
+    color: var(--light-color);
+    font-size: 13px;
+}
+
+@media (min-width: 720px) {
+    .wrong-letters__title {
+        font-size: 16px;
+    }
+    
+    .wrong-letters__letter {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+
+    .wrong-letters__empty {
+        font-size: 16px;
+    }
+}
