@@ -1,22 +1,18 @@
+import { useGame } from './hooks/useGame.js';
+import GameAudio from './childs/GameAudio.js';
 import StartScreen from './components/StartScreen.js';
 import PlayingGame from './components/PlayingGame.js';
 import GameOver from './components/GameOver.js';
-import GameInfo from './components/GameInfo.js';
-import { useContext } from 'react';
-import { GameContext } from './contexts/GameContext';
-import MusicController from './childs/MusicController.js';
 
 function App() {
-  const { gameProps } = useContext(GameContext);
-  const { onStage } = gameProps;
-
+  const { game } = useGame();
+  
   return (
-    <div className="text-center flex-column-c">
-      <MusicController />
-      {onStage === "start" && <StartScreen />}
-      {onStage === "game" && <PlayingGame />}
-      {onStage === "end" && <GameOver />}
-      {onStage === "info" && <GameInfo />}
+    <div className="flex-column-xy h-screen">
+      <GameAudio />
+      {game.onStage === "start" && <StartScreen />}
+      {game.onStage === "game" && <PlayingGame />}
+      {game.onStage === "end" && <GameOver />}
     </div>
   );
 }
