@@ -12,7 +12,7 @@ const StartScreen = () => {
             <div className="start-screen__content">
                 <AppHeading
                     title="Secret Word"
-                    description="Você não consegue descobrir a palavra misteriosa?"
+                    description="Você consegue descobrir a palavra misteriosa?"
                 />
                 <Button type="button" className="start-screen__btn" onClick={() => startGame()}>Inicie o Jogo</Button>
             </div>
