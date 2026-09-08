@@ -2,11 +2,18 @@
 
 Você consegue descobrir a palavra misteriosa?
 
-**Secret Word** é jogo divertido que desafia a sua capacidade de pensar e descobrir palavras com base em pistas.
+**Secret Word** é um jogo em React.js que desafia a sua capacidade de pensar e descobrir palavras com base em pistas.
 
 Cada rodada apresenta um novo desafio, com assuntos sobre diversas categorias. Você possui três tentativas para descobrir a palavra e conquistar pontos.
 
 Para vencer o jogo, você precisa acertar 12 palavras misteriosas. A cada rodada, leia as dicas, confie na sua intuição e administre bem suas tentativas para chegar até o pódio da vitória!
+
+## 🛠️ Tecnologias
+
+- React
+- JavaScript
+- Context API
+- CSS
 
 ## 🚀 Executando o projeto
 
