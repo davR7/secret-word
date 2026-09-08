@@ -17,7 +17,7 @@ const WrongLetters = () => {
                             className="wrong-letters__letter"
                             key={letter}
                         >
-                            {letter}
+                            {letter.toUpperCase()}
                         </span>
                     ))
                 ) : (
