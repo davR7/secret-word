@@ -11,9 +11,14 @@ const GameControl = () => {
 
     const [letter, setLetter] = useState("")
     
-    const handlerLetter = ({ target }) => {
-        const regex = /[\d\s,/./:/;/?/!/^/~/´/-/_]/g
-        setLetter(target.value.replace(regex, ""))
+    const handleLetter = ({ target }) => {
+        const regex = /[^a-zA-ZÀ-ÿ]/g;
+        const nextValue = target.value
+            .replace(regex, "")
+            .slice(0, 1)
+            .toUpperCase();
+
+        setLetter(nextValue);
     }
 
     const inputRef = useRef(null)
@@ -67,13 +72,12 @@ const GameControl = () => {
                 <input
                     type="text"
                     name="letter"
-                    onChange={handlerLetter}
+                    onChange={handleLetter}
                     value={letter}
                     ref={inputRef}
                     className="game-control__input"
-                    maxLength="1"
                     required
-                    disabled={onPopUp === "" ? false : true}
+                    disabled={onPopUp ?? false}
                 />
                 <Button className="game-control__btn" type="submit">Jogar</Button>
             </form>
